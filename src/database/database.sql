@@ -8,14 +8,16 @@ CREATE TABLE medicaments(
     laboratory VARCHAR(20),
     price DECIMAL(10, 2),
     quantity INT,
+    createdAt DATE,
+    updatedAt DATE,
     PRIMARY KEY(id)
 );
 
 DESCRIBE medicaments;
 
-INSERT INTO medicaments (name, laboratory, price, quantity)
-	VALUES('desenfriol', 'lab A', 125.2, 100);
-INSERT INTO medicaments (name, laboratory, price, quantity)
-	VALUES('diclofenaco', 'lab B', 12, 1000);
+INSERT INTO medicaments (name, laboratory, price, quantity, createdAt, updatedAt)
+	VALUES('desenfriol', 'lab A', 125.2, 100, now(), now());
+INSERT INTO medicaments (name, laboratory, price, quantity, createdAt, updatedAt)
+	VALUES('diclofenaco', 'lab B', 12, 1000, now(), now());
 
 SELECT * FROM medicaments;
