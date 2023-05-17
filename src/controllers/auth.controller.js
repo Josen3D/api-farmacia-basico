@@ -5,10 +5,9 @@ import { compare, encrypt } from "../utils/encryptPassword.handler.js";
 // import token sign
 import { tokenSign } from "../utils/jwt.handler.js";
 // import handle error
-const { handleHttpError } = require("../utils/handleError");
+import { handleHttpError } from "../utils/httpError.handler.js";
 // import user services
-const { registerUser, loginUSer } = require("../services/user.service.js");
-
+import { registerUser, loginUSer } from "../services/user.service.js";
 /**
  * Registra un usuario en la DB
  * @param {*} req
@@ -36,7 +35,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     req = matchedData(req);
-    const user = loginUSer(req.email);
+    const user = await loginUSer(req.email);
 
     //if user doesnt exist return the function
     if (!user) {
